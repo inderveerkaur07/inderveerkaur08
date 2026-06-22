@@ -344,6 +344,7 @@ section {
 .skill-front {
     font-weight: 500;
     font-size: 1.1rem;
+    background: rgba(253, 239, 239, 0.6);
 }
 
 .skill-back {
