@@ -1,0 +1,558 @@
+:root {
+    --bg-main: #FDFBF7; /* Warm off-white */
+    --bg-accent: #FDEFEF; /* Soft blush pink */
+    --text-main: #2A2A2A; /* Deep charcoal */
+    --text-light: #5A5A5A;
+    --white: #FFFFFF;
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --glass-shadow: 0 8px 32px rgba(42, 42, 42, 0.04);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Jost', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Elements */
+.scroll-spine {
+    position: fixed;
+    top: 0;
+    left: 10%;
+    width: 100px;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    background: radial-gradient(circle at 80% 20%, var(--bg-accent) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, var(--bg-accent) 0%, transparent 40%);
+    filter: blur(60px);
+    opacity: 0.5;
+}
+
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--text-main);
+    width: 0%;
+    z-index: 1000;
+    transition: width 0.1s ease-out;
+}
+
+/* Typography */
+.cursive-name {
+    font-family: 'Alex Brush', cursive;
+    font-size: 5rem;
+    font-weight: 400;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+.headline {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Glassmorphism System */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 2px; /* Sharp edges */
+    transition: all 0.4s ease;
+}
+
+.glass-panel:hover {
+    box-shadow: 0 12px 40px rgba(42, 42, 42, 0.08);
+    border-color: rgba(42, 42, 42, 0.1);
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 8rem 0;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 0;
+    background: rgba(253, 251, 247, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(42, 42, 42, 0.05);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: 'Alex Brush', cursive;
+    font-size: 2rem;
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--text-main);
+}
+
+/* Hero Section */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 6rem;
+}
+
+.intro-line {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.focus-panel {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.focus-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.focus-list {
+    list-style: none;
+}
+
+.focus-list li {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.focus-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--text-main);
+    border-radius: 50%;
+}
+
+.cta-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn {
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.glass-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--text-main);
+    transition: all 0.3s ease;
+}
+
+.glass-btn:hover {
+    background: var(--text-main);
+    color: var(--white);
+}
+
+.glass-btn.solid {
+    background: var(--text-main);
+    color: var(--white);
+}
+
+.glass-btn.solid:hover {
+    background: transparent;
+    color: var(--text-main);
+}
+
+/* Hero Image 3D Effect */
+.hero-image-container {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image-frame {
+    padding: 1.5rem;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+    max-width: 400px;
+    width: 100%;
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+    filter: grayscale(10%) contrast(110%);
+}
+
+/* About Section */
+.about-content {
+    padding: 4rem;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Skills Section */
+.skill-category {
+    margin-bottom: 4rem;
+}
+
+.category-title {
+    font-weight: 400;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    border-bottom: 1px solid rgba(42, 42, 42, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    height: 120px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.skill-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.skill-card:hover .skill-inner {
+    transform: rotateY(180deg);
+}
+
+.skill-front, .skill-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.skill-front {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.skill-back {
+    transform: rotateY(180deg);
+    font-size: 0.9rem;
+    color: var(--text-light);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Journey Timeline */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: rgba(42, 42, 42, 0.2);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -2.35rem;
+    top: 1.5rem;
+    width: 12px;
+    height: 12px;
+    background: var(--bg-main);
+    border: 2px solid var(--text-main);
+    border-radius: 50%;
+}
+
+.timeline-content {
+    padding: 2.5rem;
+}
+
+.date-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.timeline-content h4 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.location, .grade {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.chip-container {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.chip {
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(42, 42, 42, 0.1);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+}
+
+/* Certifications */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.cert-card {
+    padding: 2.5rem;
+}
+
+.cert-card h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.issuer {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cert-skills {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    border-top: 1px solid rgba(42, 42, 42, 0.1);
+    padding-top: 1rem;
+}
+
+/* Contact Section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.contact-card {
+    padding: 3rem 2rem;
+    text-decoration: none;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.contact-value {
+    font-size: 1.2rem;
+    font-weight: 400;
+    position: relative;
+}
+
+.contact-value::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--text-main);
+    transition: width 0.3s ease;
+}
+
+.contact-card:hover .contact-value::after {
+    width: 100%;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(42, 42, 42, 0.05);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Animations & Interactivity */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 8rem;
+    }
+    
+    .cursive-name {
+        font-size: 4rem;
+    }
+
+    .cta-group {
+        justify-content: center;
+    }
+
+    .nav-links {
+        display: none; /* Simplistic approach for mobile nav to maintain elegance */
+    }
+
+    .nav-content {
+        justify-content: center;
+    }
+
+    .about-content {
+        padding: 2.5rem;
+    }
+
+    .scroll-spine {
+        display: none;
+    }
+}
